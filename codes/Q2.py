@@ -28,7 +28,7 @@ class Student:
    self.student_id=student_id
    self.name=name
    self.math=int(math)
-   self.physics=int(math)
+   self.physics=int(physics)
    self.chemistry=int(chemistry)
    self.biology=int(biology)
 
@@ -70,28 +70,31 @@ with open("students.csv","r") as f:
 
  above_90=[]
  for s in students:
-  if s.math>90 or s.physics>0 or s.chemistry>0 or s.biology>90 :
+  if s.math>90 or s.physics>90 or s.chemistry>90 or s.biology>90 :
    above_90.append(s)
 
- math_scores=[]
- for s in students:
-  math_scores.append(s.math)
-  physics_scores=[s.physics for s in students]
-  chemistry_scores=[s.chemistry for s in students]
-  biology_scores=[s.biology for s in students]
+math_scores=[]
+for s in students:
+ math_scores.append(s.math)
+physics_scores=[s.physics for s in students]
+chemistry_scores=[s.chemistry for s in students]
+biology_scores=[s.biology for s in students]
 
 with open("report.txt", "w") as rep:
   rep.write("----------- FINAL REPORT -----------\n")
 
   rep.write(f"Total number of students: {total_students}\n")
+  rep.write("\n")
 
   rep.write("Class average per subject:\n")
   rep.write(f"Math average: {math_avg}\n")
   rep.write(f"Physics average: {physics_avg}\n")
   rep.write(f"Chemistry average: {chemistry_avg}\n")
   rep.write(f"Biology average: {biology_avg}\n")
+  rep.write("\n")
 
   rep.write(f"Overall class average: {overall_class_avg}\n")
+  rep.write("\n")
 
   rep.write("Top 3 students:\n")
   for s in top_3:
